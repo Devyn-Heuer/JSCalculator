@@ -2,9 +2,9 @@ let numberInputs = document.querySelectorAll(".input:not(.c)");
 let operatorInputs = document.querySelectorAll(".operator");
 let previousView = document.querySelector(".previous");
 let displayScreen = document.querySelector(".current");
-let equalsButton = document.querySelector("#equals");
+let equalsButton = document.querySelector("#Equals");
 let resetButton = document.querySelector("#reset");
-let deleteButton = document.querySelector("#backspace");
+let deleteButton = document.querySelector("#Backspace");
 let isCalculated = false;
 let currentNumber = "";
 let previousInput = "";
@@ -92,3 +92,16 @@ function resetClicked() {
   displayScreen.textContent = currentNumber;
   previousView.textContent = previousInput;
 }
+// allow keyboard functionality
+document.getElementsByTagName('html')[0].focus()
+document.getElementsByTagName('html')[0].addEventListener('keydown', function (e){
+  if(e.key >= '0' || e.key <= '9' || e.key == 'Backspace' || e.key == '=' || e.key == 'Enter'){
+    if(e.key == '=' || e.key == 'Enter'){
+      equalsButton.click();
+    } else if(e.key == 'c' || e.key == 'Escape'){
+      resetButton.click();
+    } else {
+      document.getElementById(e.key).click();
+    }
+  }
+})
