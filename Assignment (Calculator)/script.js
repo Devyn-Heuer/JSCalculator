@@ -37,6 +37,7 @@ numberInputs.forEach(function (number) {
 // initialize operators
 operatorInputs.forEach(function (operator) {
   operator.addEventListener("click", function (evt) {
+    isCalculated = false;
     if (totalValue == undefined) {
       totalValue = currentNumber;
     } else {
@@ -49,7 +50,7 @@ operatorInputs.forEach(function (operator) {
     if (!isCalculated) {
       previousView.textContent = totalValue + currentOperator;
     } 
-    isCalculated = false;
+    
     decimalClicked = false;
   });
 });
